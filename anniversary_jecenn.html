@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 2nd Month Anniversary 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --pink: #f8a4c8;
+    --pink-light: #fde8f3;
+    --pink-deep: #e0669a;
+    --gold: #d4af6a;
+    --gold-light: #f5e6c2;
+    --white: #fff;
+    --text-dark: #4a2040;
+    --text-mid: #7a3f5e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff5f9;
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ---- HEARTS BG ---- */
+  .hearts-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    overflow: hidden;
+  }
+  .heart-float {
+    position: absolute;
+    bottom: -50px;
+    font-size: 1.4rem;
+    opacity: 0;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(0) rotate(-15deg) scale(0.8); opacity: 0; }
+    10%  { opacity: 0.6; }
+    80%  { opacity: 0.3; }
+    100% { transform: translateY(-110vh) rotate(20deg) scale(1.1); opacity: 0; }
+  }
+
+  /* ---- SLIDES ---- */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .slide.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---- SLIDE 1: OPENING ---- */
+  #slide1 {
+    background: linear-gradient(160deg, #fff0f7 0%, #fce4ee 40%, #fff5e0 100%);
+    text-align: center;
+  }
+  .opening-emoji {
+    font-size: 4rem;
+    animation: pulse 2.2s ease-in-out infinite;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.15); }
+  }
+  .title-main {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    font-weight: 700;
+    color: var(--pink-deep);
+    text-shadow: 0 2px 16px #f8c8dc88;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+  .title-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: var(--text-mid);
+    font-style: italic;
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 2.2rem;
+  }
+  .btn-main {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--pink-deep), #c2548a);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.85rem 2.2rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 20px #e0669a44;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .btn-main:hover { transform: scale(1.05); box-shadow: 0 6px 28px #e0669a66; }
+
+  /* ---- SLIDE 2: AWAL KITA ---- */
+  #slide2 {
+    background: linear-gradient(160deg, #fff5fb 0%, #fde8f3 60%, #fff8f0 100%);
+  }
+  .slide-inner { max-width: 640px; width: 100%; }
+
+  .section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 700;
+    color: var(--pink-deep);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .story-block {
+    background: rgba(255,255,255,0.85);
+    border: 1.5px solid #f7c8df;
+    border-radius: 20px;
+    padding: 2rem 2.2rem;
+    box-shadow: 0 4px 32px #f8a4c820;
+  }
+  .story-line {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.98rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+    margin-bottom: 0.2rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .story-line.in { opacity: 1; transform: none; }
+
+  /* ---- SLIDE 3: MOMEN ---- */
+  #slide3 {
+    background: linear-gradient(160deg, #fff9ec 0%, #fde8f3 50%, #fff0f7 100%);
+    text-align: center;
+  }
+  .date-big {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(4rem, 15vw, 8rem);
+    font-weight: 700;
+    color: var(--pink-deep);
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+  }
+  .sparkle-wrap {
+    position: relative;
+    display: inline-block;
+  }
+  .sparkle {
+    position: absolute;
+    font-size: 1.6rem;
+    animation: sparkleAnim 2.4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .sparkle:nth-child(1) { top: -15px; left: -20px; animation-delay: 0s; }
+  .sparkle:nth-child(2) { top: 10px; right: -22px; animation-delay: 0.5s; }
+  .sparkle:nth-child(3) { bottom: 0; left: 10px; animation-delay: 1s; }
+  .sparkle:nth-child(4) { bottom: -10px; right: 0; animation-delay: 1.5s; }
+  @keyframes sparkleAnim {
+    0%, 100% { opacity: 0.2; transform: scale(0.7) rotate(-10deg); }
+    50%       { opacity: 1;   transform: scale(1.2) rotate(10deg); }
+  }
+  .moment-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--text-mid);
+    max-width: 460px;
+    line-height: 1.8;
+    font-style: italic;
+    margin: 1.2rem auto 0;
+  }
+  .glow-box {
+    background: rgba(255,255,255,0.9);
+    border: 2px solid var(--gold-light);
+    border-radius: 20px;
+    padding: 2rem 2.4rem;
+    box-shadow: 0 0 40px #fce4a855, 0 4px 24px #f8c8dc33;
+    max-width: 520px;
+    margin-top: 1.8rem;
+  }
+
+  /* ---- SLIDE 4: CAROUSEL ---- */
+  #slide4 {
+    background: linear-gradient(160deg, #fdf0fa 0%, #fff5e0 60%, #fde8f3 100%);
+    text-align: center;
+  }
+  .carousel-wrap {
+    width: 100%; max-width: 500px;
+    position: relative;
+  }
+  .carousel-track {
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+  }
+  .carousel-card {
+    min-width: 100%;
+    background: rgba(255,255,255,0.9);
+    border: 1.5px solid #f7c8df;
+    border-radius: 20px;
+    padding: 2.6rem 2rem;
+    box-shadow: 0 4px 28px #f8a4c820;
+  }
+  .carousel-card .card-icon { font-size: 2.6rem; margin-bottom: 0.8rem; display: block; }
+  .carousel-card .card-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1.4rem;
+  }
+  .c-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #f7c8df;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    border: none;
+  }
+  .c-dot.active { background: var(--pink-deep); transform: scale(1.3); }
+  .carousel-arrows {
+    display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;
+  }
+  .c-arrow {
+    background: rgba(255,255,255,0.9);
+    border: 1.5px solid #f7c8df;
+    color: var(--pink-deep);
+    font-size: 1.3rem;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .c-arrow:hover { background: var(--pink-light); transform: scale(1.08); }
+
+  /* ---- SLIDE 5: PERASAAN ---- */
+  #slide5 {
+    background: linear-gradient(160deg, #fff0f7 0%, #fde8f3 50%, #fff8f0 100%);
+    text-align: center;
+  }
+  .feeling-box {
+    background: rgba(255,255,255,0.88);
+    border: 1.5px solid #f7c8df;
+    border-radius: 24px;
+    padding: 2.4rem 2.4rem;
+    max-width: 520px;
+    box-shadow: 0 4px 32px #f8a4c822;
+    position: relative;
+    overflow: hidden;
+  }
+  .feeling-box::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 70% 30%, #fde8f366, transparent 70%);
+    pointer-events: none;
+  }
+  .feeling-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.98rem, 2.5vw, 1.15rem);
+    color: var(--text-mid);
+    line-height: 2;
+    font-style: italic;
+  }
+  .heart-accent {
+    font-size: 2.5rem;
+    display: block;
+    margin: 1rem auto;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14%       { transform: scale(1.25); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.18); }
+  }
+
+  /* ---- SLIDE 6: SERTIFIKAT ---- */
+  #slide6 {
+    background: linear-gradient(160deg, #fffaee 0%, #fff5f9 50%, #fde8f3 100%);
+    text-align: center;
+  }
+  .cert-wrap {
+    max-width: 560px;
+    width: 100%;
+  }
+  .cert-card {
+    background: linear-gradient(160deg, #fffdf5, #fff9f4);
+    border: 3px solid var(--gold);
+    border-radius: 20px;
+    padding: 2.8rem 2.4rem 2.4rem;
+    position: relative;
+    box-shadow: 0 0 60px #d4af6a22, 0 4px 32px #f8a4c820, inset 0 0 40px #fce4a820;
+  }
+  .cert-card::before, .cert-card::after {
+    content: '✦';
+    position: absolute;
+    color: var(--gold);
+    font-size: 1.2rem;
+  }
+  .cert-card::before { top: 14px; left: 16px; }
+  .cert-card::after  { top: 14px; right: 16px; }
+  .cert-corner {
+    position: absolute;
+    color: var(--gold);
+    font-size: 1.2rem;
+  }
+  .cert-corner.bl { bottom: 14px; left: 16px; }
+  .cert-corner.br { bottom: 14px; right: 16px; }
+  .cert-border-inner {
+    border: 1.5px solid var(--gold-light);
+    border-radius: 14px;
+    padding: 1.8rem 1.6rem;
+  }
+  .cert-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .cert-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    color: var(--pink-deep);
+    line-height: 1.2;
+    margin: 0.5rem 0;
+  }
+  .cert-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.88rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0.8rem 0;
+    font-weight: 600;
+  }
+  .cert-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin: 0.8rem 0;
+  }
+  .cert-divider {
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0.8rem auto;
+  }
+  .cert-by {
+    font-family: 'Dancing Script', cursive;
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    font-style: italic;
+  }
+  .cert-stamp {
+    width: 70px; height: 70px;
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    margin: 1.2rem auto 0;
+    position: relative;
+    animation: stampGlow 3s ease-in-out infinite;
+  }
+  @keyframes stampGlow {
+    0%, 100% { box-shadow: 0 0 10px #d4af6a44; }
+    50%       { box-shadow: 0 0 28px #d4af6a88; }
+  }
+  .sign-line {
+    display: inline-block;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--pink-deep);
+    border-bottom: 1px solid var(--gold-light);
+    padding: 0 1rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ---- SLIDE 7: CLOSING ---- */
+  #slide7 {
+    background: linear-gradient(160deg, #ffe8f4 0%, #fff0f7 40%, #fce4a8 100%);
+    text-align: center;
+  }
+  .closing-main {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.4rem, 9vw, 5rem);
+    font-weight: 700;
+    color: var(--pink-deep);
+    line-height: 1.15;
+    text-shadow: 0 2px 20px #f8c8dc66;
+    margin-bottom: 1rem;
+  }
+  .closing-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.95rem, 3vw, 1.2rem);
+    color: var(--text-mid);
+    font-style: italic;
+    max-width: 400px;
+    line-height: 1.7;
+    margin: 0 auto 2rem;
+  }
+  .btn-hug {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--pink-deep), #a84880);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 20px #e0669a44;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 0.4rem;
+    text-decoration: none;
+  }
+  .btn-hug:hover { transform: scale(1.06); box-shadow: 0 6px 28px #e0669a66; }
+  .btn-repeat {
+    display: inline-block;
+    background: rgba(255,255,255,0.85);
+    color: var(--pink-deep);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    border: 2px solid var(--pink);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 0.4rem;
+    text-decoration: none;
+  }
+  .btn-repeat:hover { transform: scale(1.05); background: #fde8f3; }
+
+  /* ---- MUSIC CTRL ---- */
+  #music-btn {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    z-index: 100;
+    background: rgba(255,255,255,0.9);
+    border: 2px solid var(--pink);
+    border-radius: 50%;
+    width: 52px; height: 52px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px #f8a4c840;
+    transition: transform 0.2s;
+  }
+  #music-btn:hover { transform: scale(1.1); }
+
+  /* ---- HUG EFFECT ---- */
+  .hug-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(255,230,244,0.85);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .hug-overlay.show { opacity: 1; pointer-events: all; }
+  .hug-msg {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    color: var(--pink-deep);
+    text-align: center;
+    padding: 1rem;
+    text-shadow: 0 2px 20px #f8c8dc88;
+  }
+  .hug-close {
+    margin-top: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    cursor: pointer;
+    border: 1.5px solid var(--pink);
+    background: rgba(255,255,255,0.8);
+    padding: 0.6rem 1.8rem;
+    border-radius: 30px;
+  }
+
+  @media (max-width: 480px) {
+    .story-block, .feeling-box { padding: 1.4rem 1.2rem; }
+    .cert-card { padding: 1.8rem 1.2rem 1.6rem; }
+    .cert-border-inner { padding: 1.2rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating hearts BG -->
+<div class="hearts-bg" id="heartsContainer"></div>
+
+<!-- Music button -->
+<button id="music-btn" onclick="toggleMusic()" title="Musik">🎵</button>
+
+<!-- Hidden audio -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/audio/2024/02/17/audio_f6c9e33462.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HUG OVERLAY -->
+<div class="hug-overlay" id="hugOverlay">
+  <div class="hug-msg">🤗 Terima peluknya ya sayang~<br>Sayang banget sama kamu!! 🤍</div>
+  <button class="hug-close" onclick="closeHug()">Tutup 💕</button>
+</div>
+
+<!-- ============================== -->
+<!-- SLIDE 1: OPENING               -->
+<!-- ============================== -->
+<section class="slide" id="slide1">
+  <div class="slide-inner" style="text-align:center;">
+    <span class="opening-emoji">💖</span>
+    <h1 class="title-main">Happy 2nd Month<br>Anniversary 💖</h1>
+    <p class="title-sub">Untuk Jecenn Aldy Geoll, orang yang tanpa sadar jadi bahagiaku</p>
+    <a href="#slide2" class="btn-main" onclick="scrollToSlide('slide2')">Mulai Cerita Kita 💕</a>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- SLIDE 2: AWAL KITA             -->
+<!-- ============================== -->
+<section class="slide" id="slide2">
+  <div class="slide-inner">
+    <h2 class="section-title">Awal Kita 🌸</h2>
+    <div class="story-block" id="storyBlock">
+      <p class="story-line">Kamuu tau nda senggg… sebelum aku kenal kamu, aku tuh udah stalk sosmed kamu duluan lewat Punch 😭</p>
+      <p class="story-line">Terus aku liat repost-an kamu… dan anehnya, tiap kamu galau, aku ikut ngegalau juga 🥺</p>
+      <p class="story-line">Padahal kita belum kenal… aku juga bingung kenapa bisa gitu :/</p>
+      <p class="story-line" style="margin-top:1rem; font-weight:500;">Sampai akhirnya… kita voice di Discord.</p>
+      <p class="story-line">Kita saling saut-sautan manggil <span style="color:var(--pink-deep);font-weight:500;">'sayang'</span> 🤍</p>
+      <p class="story-line" style="margin-top:1rem;">Dan dari situ… aku mulai tumbuh perasaan ke kamu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- SLIDE 3: MOMEN PENTING         -->
+<!-- ============================== -->
+<section class="slide" id="slide3">
+  <div class="slide-inner" style="text-align:center;">
+    <h2 class="section-title">Hari Kita 💖</h2>
+    <div class="sparkle-wrap">
+      <span class="sparkle">✨</span>
+      <span class="sparkle">💫</span>
+      <span class="sparkle">⭐</span>
+      <span class="sparkle">✨</span>
+      <div class="date-big">15</div>
+    </div>
+    <div class="glow-box">
+      <p class="moment-text">
+        Di tanggal 15, tepat 2 bulan yang lalu…<br>
+        kita akhirnya saling jujur tentang perasaan kita.<br><br>
+        Dan di hari itu…<br>
+        kita resmi jadi <strong style="color:var(--pink-deep)">'kita'</strong> 🫶<br><br>
+        Yeayyyy 😭💖
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- SLIDE 4: KENANGAN LUCU         -->
+<!-- ============================== -->
+<section class="slide" id="slide4">
+  <div class="slide-inner" style="display:flex;flex-direction:column;align-items:center;">
+    <h2 class="section-title">Hal Kecil yang Aku Suka Dari Kita 🫶</h2>
+    <div class="carousel-wrap">
+      <div class="carousel-track">
+        <div class="carousel-inner" id="carouselInner">
+          <div class="carousel-card">
+            <span class="card-icon">😭</span>
+            <p class="card-text">Aku manggil kamu: <strong style="color:var(--pink-deep)">Bang Jecen, Jeno, Mark</strong>… banyak banget panggilanmu sayang 😭</p>
+          </div>
+          <div class="carousel-card">
+            <span class="card-icon">🤍</span>
+            <p class="card-text">Kamu manggil aku: <strong style="color:var(--pink-deep)">Bang Wiwi Wowo</strong>… entah dari mana tapi lucu banget 🤍</p>
+          </div>
+          <div class="carousel-card">
+            <span class="card-icon">📞</span>
+            <p class="card-text"><strong style="color:var(--pink-deep)">Call berjam-jam… sampai berhari-hari.</strong> Nggak ada bosannya kalau udah sama kamu 🥺</p>
+          </div>
+          <div class="carousel-card">
+            <span class="card-icon">🌙</span>
+            <p class="card-text">Hal-hal random yang kita lakuin bareng… tapi selalu aja berhasil bikin aku <strong style="color:var(--pink-deep)">senyum sendiri</strong> 🫶</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-arrows">
+        <button class="c-arrow" onclick="moveCarousel(-1)">‹</button>
+        <button class="c-arrow" onclick="moveCarousel(1)">›</button>
+      </div>
+      <div class="carousel-nav" id="carouselNav"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- SLIDE 5: PERASAAN              -->
+<!-- ============================== -->
+<section class="slide" id="slide5">
+  <div class="slide-inner" style="display:flex;flex-direction:column;align-items:center;">
+    <h2 class="section-title">Yang Aku Rasakan 🥺</h2>
+    <div class="feeling-box">
+      <p class="feeling-text">
+        Aku nggak tau ini mulai dari kapan…<br>
+        tapi kamu pelan-pelan jadi orang yang paling aku tunggu.<br><br>
+        Dari notifikasi kamu…<br>
+        dari suara kamu…<br>
+        sampai ke hal kecil yang kamu lakuin.<br><br>
+        Aku nyaman… aku seneng…<br>
+        aku sayang banget sama kamu 🥺🤍
+      </p>
+      <span class="heart-accent">💗</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- SLIDE 6: SERTIFIKAT            -->
+<!-- ============================== -->
+<section class="slide" id="slide6">
+  <div class="cert-wrap">
+    <h2 class="section-title">Special Award 🎖️</h2>
+    <div class="cert-card">
+      <span class="cert-corner bl">✦</span>
+      <span class="cert-corner br">✦</span>
+      <div class="cert-border-inner">
+        <p class="cert-title">✦ Sertifikat Penghargaan ✦</p>
+        <div class="cert-divider"></div>
+        <p style="font-family:'Playfair Display',serif;font-size:0.85rem;color:var(--text-mid);font-style:italic;">Diberikan kepada:</p>
+        <p class="cert-name">Jecenn Aldy Geoll 🤍</p>
+        <div class="cert-divider"></div>
+        <p class="cert-role">Boyfriend Terbaik Sepanjang Masa dan Selamanya 💖</p>
+        <div class="cert-divider"></div>
+        <p class="cert-desc">
+          Karena telah menjadi seseorang yang selalu ada,<br>
+          selalu sabar, selalu tengil, selalu bandel,<br>
+          dan selalu berhasil bikin aku jatuh cinta setiap hari.
+        </p>
+        <div class="cert-divider"></div>
+        <p style="font-family:'Playfair Display',serif;font-size:0.8rem;color:var(--text-mid);font-style:italic;margin-top:0.6rem;">Ditetapkan oleh:</p>
+        <span class="sign-line">Orang yang paling mencintaimu 🤍</span>
+        <div class="cert-stamp">💖</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- SLIDE 7: CLOSING               -->
+<!-- ============================== -->
+<section class="slide" id="slide7">
+  <div class="slide-inner" style="text-align:center;">
+    <div class="closing-main">I LOVEE YOUUU<br>MAY LUPP ATHWUUU 🤍🤍🤍</div>
+    <p class="closing-sub">Terima kasih sudah ada… dan semoga kita terus 'kita' 💖</p>
+    <div>
+      <button class="btn-hug" onclick="showHug()">Kirim Peluk Virtual 🤗</button>
+      <button class="btn-repeat" onclick="window.scrollTo({top:0,behavior:'smooth'})">Ulangi Lagi 💕</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ---- FLOATING HEARTS ----
+  const emojis = ['💖','💗','💓','💕','🌸','✨','💫','🩷'];
+  const container = document.getElementById('heartsContainer');
+  for (let i = 0; i < 18; i++) {
+    const h = document.createElement('div');
+    h.className = 'heart-float';
+    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+    h.style.animationDuration = (Math.random() * 8 + 7) + 's';
+    h.style.animationDelay = (Math.random() * 10) + 's';
+    container.appendChild(h);
+  }
+
+  // ---- INTERSECTION OBSERVER for slide visibility ----
+  const slides = document.querySelectorAll('.slide');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        if (e.target.id === 'slide2') animateStory();
+      }
+    });
+  }, { threshold: 0.2 });
+  slides.forEach(s => obs.observe(s));
+
+  // ---- STORY LINES ANIMATION ----
+  let storyAnimated = false;
+  function animateStory() {
+    if (storyAnimated) return;
+    storyAnimated = true;
+    const lines = document.querySelectorAll('.story-line');
+    lines.forEach((l, i) => {
+      setTimeout(() => l.classList.add('in'), i * 400);
+    });
+  }
+
+  // ---- SCROLL TO SLIDE ----
+  function scrollToSlide(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ---- CAROUSEL ----
+  let carIdx = 0;
+  const total = 4;
+  const inner = document.getElementById('carouselInner');
+  const nav = document.getElementById('carouselNav');
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('button');
+    d.className = 'c-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goCarousel(i);
+    nav.appendChild(d);
+  }
+  function goCarousel(idx) {
+    carIdx = idx;
+    inner.style.transform = 'translateX(-' + (carIdx * 100) + '%)';
+    document.querySelectorAll('.c-dot').forEach((d, i) => d.classList.toggle('active', i === carIdx));
+  }
+  function moveCarousel(dir) {
+    carIdx = (carIdx + dir + total) % total;
+    goCarousel(carIdx);
+  }
+  // Auto-rotate carousel
+  setInterval(() => moveCarousel(1), 4000);
+
+  // ---- MUSIC ----
+  const audio = document.getElementById('bgMusic');
+  let playing = false;
+  const musicBtn = document.getElementById('music-btn');
+
+  // Try autoplay
+  window.addEventListener('click', () => {
+    if (!playing) { audio.play().then(() => { playing = true; musicBtn.textContent = '🔊'; }).catch(() => {}); }
+  }, { once: true });
+
+  function toggleMusic() {
+    if (playing) { audio.pause(); playing = false; musicBtn.textContent = '🎵'; }
+    else { audio.play().then(() => { playing = true; musicBtn.textContent = '🔊'; }).catch(() => {}); }
+  }
+
+  // ---- HUG EFFECT ----
+  function showHug() {
+    const o = document.getElementById('hugOverlay');
+    o.classList.add('show');
+    // Extra burst of hearts
+    for (let i = 0; i < 12; i++) {
+      const h = document.createElement('div');
+      h.style.cssText = 'position:fixed;font-size:2rem;pointer-events:none;z-index:300;animation:floatUp 2.5s ease forwards;';
+      h.style.left = Math.random() * 90 + 'vw';
+      h.style.bottom = '10vh';
+      h.textContent = ['💖','🤗','💕','🌸'][Math.floor(Math.random()*4)];
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 2600);
+    }
+  }
+  function closeHug() {
+    document.getElementById('hugOverlay').classList.remove('show');
+  }
+</script>
+</body>
+</html>
